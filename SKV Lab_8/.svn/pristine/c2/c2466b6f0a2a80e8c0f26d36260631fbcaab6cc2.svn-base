@@ -1,0 +1,41 @@
+﻿Imports System.Windows.Forms.VisualStyles.VisualStyleElement
+Imports System.Math
+Public Class Form1
+    Dim a, b, h, S1, N, S2, S, pryam As Double
+
+
+
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        a = Val(TextBox1.Text)
+        b = Val(TextBox2.Text)
+        h = Val(TextBox3.Text)
+        N = (b - a) / h 'кол-во точек, на которые разбивается диапазон
+
+        'вычисление первой суммы (см. формулу)
+        S1 = 0
+        For i = 1 To N - 1
+            S1 = S1 + f(h * i + a)
+        Next i
+
+        'Вычисление второй суммы (см. формулу). Я преобразовал немного - 'так короче.
+        S2 = 0
+        For i = 1 To N
+            S2 = S2 + f(h * i + a)
+        Next i
+
+        'Итоговая формула
+        S = h / 3 * (0.5 * f(a) + S1 + 1.25 * S2 + 0.69 * f(b))
+        TextBox4.Text = S
+    End Sub
+    Function f(x) As Single
+        'Сама функция
+        f = x * Log(x)
+    End Function
+    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+        Dim n = 8, s = 0
+        a = Val(TextBox1.Text)
+        b = Val(TextBox2.Text)
+    End Sub
+
+End Class
+
