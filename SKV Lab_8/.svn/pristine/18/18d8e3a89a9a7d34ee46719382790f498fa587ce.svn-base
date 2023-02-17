@@ -1,0 +1,37 @@
+﻿Imports System.Windows.Forms.VisualStyles.VisualStyleElement
+Imports System.Math
+Imports System.Buffers
+Imports System.Windows.Forms.Design.AxImporter
+
+Public Class Form1
+    Dim a, b, h, S, N, P As Double
+
+
+
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        a = Val(TextBox1.Text)
+        b = Val(TextBox2.Text)
+        h = Val(TextBox3.Text)
+
+        'Итоговая формула
+        S = (b - a) / 6 * (f(a) + 4 * f((a + b) / 2) + f(b))
+        TextBox4.Text = S
+    End Sub
+    Function f(x) As Single
+        'Сама функция
+        f = x * Log(x)
+    End Function
+    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+        Dim x, y As Double
+        a = Val(TextBox1.Text)
+        b = Val(TextBox2.Text)
+        N = Val(TextBox3.Text)
+        h = (b - a) / N
+
+        P = ((f(a) + f(b)) / 2) * (b - a) / h
+        TextBox5.Text = P
+
+    End Sub
+
+End Class
+
